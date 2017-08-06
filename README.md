@@ -7,7 +7,9 @@ Based on:
 * https://hackernoon.com/using-bootstrap-in-rails-5-969cbe423926
 * https://github.com/almasaeed2010/AdminLTE
 * https://linuxconfig.org/how-to-install-ruby-on-rails-on-debian-9-stretch-linux
+* http://slim-lang.com
 
 ---
 
-_Martin Cuellar_ <nelbren@gmail.com>
+_Martin Cuellar_ 
+<nelbren@gmail.com>
