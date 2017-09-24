@@ -3,6 +3,7 @@
 # integrating_AdminLTE_on_rails.bash
 #
 # v0.0.1 - 2017-08-06 - Martin Cuellar <nelbren@gmail.com>
+# v0.0.2 - 2017-09-23 - Martin Cuellar <nelbren@gmail.com>
 #
 # Based on:
 # https://hackernoon.com/using-bootstrap-in-rails-5-969cbe423926
@@ -43,6 +44,9 @@ install_main_js() {
 }
 
 install_third_party_js() {
+  if [ ! -d $project/vendor/assets/javascripts ]; then
+    mkdir -p $project/vendor/assets/javascripts
+  fi
   cp $base/bower_components/jquery-slimscroll/jquery.slimscroll.min.js $project/vendor/assets/javascripts/
 }
 
