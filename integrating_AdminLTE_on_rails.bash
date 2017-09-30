@@ -4,6 +4,7 @@
 #
 # v0.0.1 - 2017-08-06 - Martin Cuellar <nelbren@gmail.com>
 # v0.0.2 - 2017-09-23 - Martin Cuellar <nelbren@gmail.com>
+# v0.0.3 - 2017-09-30 - Martin Cuellar <nelbren@gmail.com>
 #
 # Based on:
 # https://hackernoon.com/using-bootstrap-in-rails-5-969cbe423926
@@ -100,7 +101,7 @@ EOF
 setup_app() {
   app=$project/app/assets/javascripts/application.js 
   if ! grep -q "jquery.slimscroll.min" $app; then
-    sed "s/\/\/= require_tree ./\/\/= require bootstrap\n\/\/= require jquery.slimscroll.min\n\/\/= require_tree ./" $app > $filetemp
+    sed "s/\/\/= require_tree ./\/\/= require jquery\n\/\/= require bootstrap\n\/\/= require jquery.slimscroll.min\n\/\/= require_tree ./" $app > $filetemp
     mv $filetemp $app
   fi
 }
@@ -119,6 +120,7 @@ setup_gems() {
   append "gem 'bootstrap-sass', '~> 3.3.6'" $gems
   append "gem 'slim'" $gems
   append "gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'" $gems
+  append "gem 'jquery-rails', '~> 4.1', '>= 4.1.1'" $gems
   if [ "$gems_dirty" == "1" ]; then
     bundle install
     sudo gem install slim
