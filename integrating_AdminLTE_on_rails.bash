@@ -119,6 +119,8 @@ setup_gems() {
   gems_dirty=0
   append "gem 'bootstrap-sass', '~> 3.3.6'" $gems
   append "gem 'slim'" $gems
+  append "gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'"
+  append "gem 'jquery-rails', '~> 4.1', '>= 4.1.1'"
   if [ "$gems_dirty" == "1" ]; then
     bundle install
     sudo gem install slim
