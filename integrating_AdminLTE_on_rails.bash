@@ -5,6 +5,7 @@
 # v0.0.1 - 2017-08-06 - Martin Cuellar <nelbren@gmail.com>
 # v0.0.2 - 2017-09-23 - Martin Cuellar <nelbren@gmail.com>
 # v0.0.3 - 2017-09-30 - Martin Cuellar <nelbren@gmail.com>
+# v0.0.4 - 2018-02-21 - Martin Cuellar <nelbren@gmail.com>
 #
 # Based on:
 # https://hackernoon.com/using-bootstrap-in-rails-5-969cbe423926
@@ -19,9 +20,10 @@ install_package() {
 }
 
 setup_packages() {
-  install_package git 
-  install_package ruby 
-  install_package rails
+  packages="git ruby ruby-dev rails build-essential dh-autoreconf libsqlite3-dev zlib1g-dev"
+  for package in $packages; do
+    install_package $package
+  done
 }
 
 make_project() {
@@ -31,7 +33,7 @@ make_project() {
 }
 
 get_adminlte() {
-  if [ ! -d $base ]; then  
+  if [ ! -d $base ]; then
     git clone https://github.com/almasaeed2010/AdminLTE.git
   fi
 }
@@ -99,7 +101,7 @@ EOF
 }
 
 setup_app() {
-  app=$project/app/assets/javascripts/application.js 
+  app=$project/app/assets/javascripts/application.js
   if ! grep -q "jquery.slimscroll.min" $app; then
     sed "s/\/\/= require_tree ./\/\/= require jquery\n\/\/= require bootstrap\n\/\/= require jquery.slimscroll.min\n\/\/= require_tree ./" $app > $filetemp
     mv $filetemp $app
@@ -120,10 +122,11 @@ setup_gems() {
   append "gem 'bootstrap-sass', '~> 3.3.6'" $gems
   append "gem 'slim'" $gems
   append "gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'" $gems
-  append "gem 'jquery-rails', '~> 4.1', '>= 4.1.1'" $gems
+  #append "gem 'jquery-rails', '~> 4.1', '>= 4.1.1'" $gems
   if [ "$gems_dirty" == "1" ]; then
-    bundle install
     sudo gem install slim
+    sudo gem install sqlite3
+    bundle install
   fi
 }
 
