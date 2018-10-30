@@ -6,6 +6,7 @@
 # v0.0.2 - 2017-09-23 - Martin Cuellar <nelbren@gmail.com>
 # v0.0.3 - 2017-09-30 - Martin Cuellar <nelbren@gmail.com>
 # v0.0.4 - 2018-02-21 - Martin Cuellar <nelbren@gmail.com>
+# v0.0.5 - 2018-11-04 - Martin Cuellar <nelbren@gmail.com>
 #
 # Based on:
 # https://hackernoon.com/using-bootstrap-in-rails-5-969cbe423926
@@ -122,7 +123,7 @@ setup_gems() {
   append "gem 'bootstrap-sass', '~> 3.3.6'" $gems
   append "gem 'slim'" $gems
   append "gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'" $gems
-  #append "gem 'jquery-rails', '~> 4.1', '>= 4.1.1'" $gems
+  append "gem 'jquery-rails'" $gems
   if [ "$gems_dirty" == "1" ]; then
     sudo gem install slim
     sudo gem install sqlite3
